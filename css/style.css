@@ -1,10 +1,32 @@
 body {
-    background-color: aqua;
+  background-color: aqua;
 }
 
 ul {
-    list-style: none;
-    display: flex;
-    justify-content: space-evenly;
+  list-style: none;
+  display: flex;
+  justify-content: space-around;
 }
 
+/* #tamagotchi {
+    width: 103px;
+    height: 103px;
+    background: url('/gato-spritesheet.png');
+    top: 50%;
+    transform: translate(-50%);
+    animation: tamagotchi, 
+} */
+
+#buttons {
+    display: flex;
+    justify-content: space-around;
+}
+
+#egg {
+  height: 400px;
+  width: 50%;
+  height: 550px;
+  /* margin: auto;
+  border: black solid 2px;
+  border-radius: 900px; */
+}
