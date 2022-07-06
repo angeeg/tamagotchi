@@ -1,3 +1,10 @@
 body {
     background-color: aqua;
 }
+
+ul {
+    list-style: none;
+    display: flex;
+    justify-content: space-evenly;
+}
+
