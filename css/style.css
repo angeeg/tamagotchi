@@ -7,13 +7,22 @@ body {
   height: 100vh;
 }
 
-.sun-pic{
-  margin: auto;
+.day-img{
   height: 100px;
   width: 100px;
+}
+
+.sun-pic, .moon-pic{
+  margin: auto;
   padding-top: 20px;
   padding-left: 20px;
 }
+
+.moon-pic{
+  transition: transform 1s;
+}
+
+
 
 .btns {
   background-color: rgb(0, 22, 187) ;
