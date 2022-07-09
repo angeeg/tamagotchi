@@ -4,15 +4,13 @@
 const hungerStat = document.querySelector("#hunger-col");
 const sleepinessStat = document.querySelector("#sleepiness-col");
 const boredomStat = document.querySelector("#boredom-col");
-const ageStat = document.querySelector("h2");
-const heading = document.querySelector("#heading");
-const h2 = document.querySelector("#name");
+const ageStat = document.querySelector("#age");
+
+// const h2 = document.querySelector("#name");
 const h4 = document.querySelector("h4");
 const inputForm = document.querySelector("#input-name");
-const inputValue = inputForm.value;
-
 // buttons
-const submitBtn = document.querySelector(".btns ");
+const submitBtn = document.querySelector("#submit ");
 const eatBtn = document.querySelector("#eat");
 const playBtn = document.querySelector("#play");
 const sleepBtn = document.querySelector("#sleep");
@@ -22,11 +20,10 @@ class Tamagotchi {
   constructor(name) {
     this.name = name;
     this.hunger = 4;
-    this.sleepiness = 2;
     this.boredom = 4;
+    this.sleepiness = 2;
     this.age = 0;
   }
-
   // methods to display data
   getHunger() {
     hungerStat.innerHTML = `${tamagotchi.hunger}`;
@@ -38,28 +35,29 @@ class Tamagotchi {
     sleepinessStat.innerHTML = `${tamagotchi.sleepiness}`;
   }
 }
-// instantiate tamagotchi
 
+// not taking in the input value when outside of the nameTamagotchi() function
 
-// console.log(tamagotchi.name);
+// instantiate new tamagotchi object
+// console.log("tamagotchiName", tamagotchiName);
+const tamagotchi = new Tamagotchi();
+console.log(tamagotchi);
 
 // create an object or class for the game itself
 const game = {
+  // when accessing the input value from within this function the tamagotchi variable is no longer global
   nameTamagotchi: () => {
-    console.log(inputValue)
-    // // display tamagotchi name on screen
-    let tamagotchiName = document.getElementById("input-name").value
-    // console.log(tamagotchiName);
-    const tamagotchi = new Tamagotchi(tamagotchiName);
-  //  console.log(tamagotchi)
-  const h2Name = document.createElement("h2")
-  h2Name.innerText = tamagotchi.name
-    heading.appendChild(h2Name);
+    // get input value
+    let tamagotchiName = document.getElementById("input-name").value;
+    tamagotchi.name = tamagotchiName
+    const h3Name = document.createElement("h3");
+    h3Name.innerText = tamagotchi.name;
+    const heading = document.querySelector("#heading");
+    heading.appendChild(h3Name);
     // hide input form once submit button is clicked
     h4.style.display = "none";
     inputForm.style.display = "none";
     submitBtn.style.display = "none";
-    console.log(inputValue);
     startGame();
     console.log("game starts here");
   },
@@ -129,7 +127,6 @@ const game = {
     if (tamagotchi.boredom === 10) {
       stopTimer();
       alert(`Poor ${tamagotchi.name} has died of boredom x_x`);
-      
     }
   },
 
@@ -139,8 +136,10 @@ const game = {
     tamagotchi.age += 1;
     ageStat.innerHTML = `Age ${tamagotchi.age}`;
     if (tamagotchi.age === 3) {
+      let spriteContainer = document.querySelector(".sprite-container");
+      spriteContainer.classList.toggle(".jumping-sprite-container");
       let sprite = document.querySelector(".sprite-img");
-      sprite.classList.toggle(".evolved-sprite-img");
+      sprite.classList.toggle(".jumping-sprite-img");
     }
   },
 };
@@ -162,11 +161,12 @@ const timer = () => {
       game.increaseHunger();
       game.increaseSleepiness();
       game.increaseBoredom();
-    }
-    if (sec % 10 === 0) {
       game.ageUp();
-      console.log(tamagotchi.age);
     }
+    // if (sec % 10 === 0) {
+    //   game.ageUp();
+    //   console.log(tamagotchi.age);
+    // }
     document.querySelector("#timer").innerText = `Time: ${sec} seconds`;
     sec++;
   }, 1000);
@@ -183,7 +183,7 @@ const timer = () => {
 const stopTimer = () => {
   clearInterval(timer);
   console.log("timer has stopped - game over");
-}
+};
 
 // add eventListeners to buttons to start, eat, play, and sleep - turn lights off when sleeping
 submitBtn.addEventListener("click", game.nameTamagotchi);

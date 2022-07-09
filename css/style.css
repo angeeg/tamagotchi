@@ -114,6 +114,10 @@ th {
   border-radius: 900px; */
 }
 
+#age{
+  text-align: center;
+}
+
 /* #tamagotchi{
   width: 150px;
   height: 150px;
@@ -169,21 +173,22 @@ ul {
 }
 
 /* css for dead sprite */
-/* .sprite-container{
-  
+.dead-sprite-container{
+  margin: auto;
   width: 100px;
   height: 140px;
   overflow: hidden;
 }
 
-.sprite-img{
+.dead-sprite-img{
   width: 400px;
   height: 450px;
-  animation: moveSpritesheet 1s steps(4) infinite;
-} */
+  animation: moveSpritesheet 1s steps(4);
+}
 
 /* jumping sprite */
 .jumping-sprite-container{
+  margin: auto;
   width: 95px;
   height: 140px;
   overflow: hidden;
