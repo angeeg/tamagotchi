@@ -124,7 +124,7 @@ th {
   background: rgb(96, 213, 129);
 } */
 
-.sprite-container {
+/* .sprite-container {
   margin: auto;
   padding-top: 3%;
   width: 95px;
@@ -136,7 +136,7 @@ th {
   width: 350px;
   height: 300px;
   animation: moveSpritesheet 1s steps(3) infinite;
-}
+} */
 
 .evolved-sprite-img{
   width: 550px;
@@ -183,14 +183,14 @@ ul {
 .dead-sprite-img{
   width: 400px;
   height: 450px;
-  animation: moveSpritesheet 1s steps(4);
+  animation: moveSpritesheet 1s steps(3);
 }
 
 /* jumping sprite */
 .jumping-sprite-container{
   margin: auto;
   width: 95px;
-  height: 140px;
+  height: 150px;
   overflow: hidden;
 }
 

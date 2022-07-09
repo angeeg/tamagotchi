@@ -19,7 +19,7 @@ const sleepBtn = document.querySelector("#sleep");
 class Tamagotchi {
   constructor(name) {
     this.name = name;
-    this.hunger = 4;
+    this.hunger = 9;
     this.boredom = 4;
     this.sleepiness = 2;
     this.age = 0;
@@ -36,24 +36,40 @@ class Tamagotchi {
   }
 }
 
-// not taking in the input value when outside of the nameTamagotchi() function
-
 // instantiate new tamagotchi object
-// console.log("tamagotchiName", tamagotchiName);
 const tamagotchi = new Tamagotchi();
 console.log(tamagotchi);
 
+
+  // change sprite to jumping image 
+  const toggleJumpSprite = () => {
+    let spriteContainer = document.getElementById("tamagotchi");
+    spriteContainer.classList.toggle(".jumping-sprite-container");
+    let sprite = document.getElementById("sprite-img");
+    sprite.classList.toggle(".jumping-sprite-img");
+  }
+
+  // change sprite to dead image 
+  const changeToDeadSprite = () => {
+    let spriteContainer = document.querySelector(".jumping-sprite-container");
+    spriteContainer.classList.remove(".jumping-sprite-container");
+    spriteContainer.classList.toggle(".dead-sprite-container");
+    let sprite = document.querySelector(".jumping-sprite-img");
+    sprite.setAttribute("src", "css/images/sprites/dead.png")
+    sprite.classList.toggle(".dead-sprite-img");
+    console.log(`sprite: ${sprite.className}`, `spriteContainer: ${spriteContainer.className}`)
+  }
+
 // create an object or class for the game itself
 const game = {
-  // when accessing the input value from within this function the tamagotchi variable is no longer global
   nameTamagotchi: () => {
     // get input value
     let tamagotchiName = document.getElementById("input-name").value;
     tamagotchi.name = tamagotchiName
-    const h3Name = document.createElement("h3");
-    h3Name.innerText = tamagotchi.name;
+    const h1Name = document.createElement("h1");
+    h1Name.innerText = tamagotchi.name;
     const heading = document.querySelector("#heading");
-    heading.appendChild(h3Name);
+    heading.appendChild(h1Name);
     // hide input form once submit button is clicked
     h4.style.display = "none";
     inputForm.style.display = "none";
@@ -78,6 +94,7 @@ const game = {
     tamagotchi.hunger += 1;
     hungerStat.innerHTML = `${tamagotchi.hunger}`;
     if (tamagotchi.hunger === 10) {
+      changeToDeadSprite()
       alert(`Poor ${tamagotchi.name} was starved to death x_x`);
     }
   },
@@ -109,7 +126,8 @@ const game = {
     tamagotchi.sleepiness += 1;
     sleepinessStat.innerHTML = `${tamagotchi.sleepiness}`;
     if (tamagotchi.sleepiness === 10) {
-      // alert(`Poor ${tamagotchi.name} has fainted from exhaustion x_x`);
+      changeToDeadSprite()
+      alert(`Poor ${tamagotchi.name} has fainted from exhaustion x_x`);
       stopTimer();
     }
   },
@@ -126,6 +144,8 @@ const game = {
     boredomStat.innerHTML = `${tamagotchi.boredom}`;
     if (tamagotchi.boredom === 10) {
       stopTimer();
+      getBoredom()
+      changeToDeadSprite()
       alert(`Poor ${tamagotchi.name} has died of boredom x_x`);
     }
   },
@@ -135,13 +155,14 @@ const game = {
   ageUp: () => {
     tamagotchi.age += 1;
     ageStat.innerHTML = `Age ${tamagotchi.age}`;
-    if (tamagotchi.age === 3) {
-      let spriteContainer = document.querySelector(".sprite-container");
-      spriteContainer.classList.toggle(".jumping-sprite-container");
-      let sprite = document.querySelector(".sprite-img");
-      sprite.classList.toggle(".jumping-sprite-img");
+    if (tamagotchi.age === 3 || tamagotchi.age === 6) {
+     const sprite = document.querySelector("#sprite-img")
+     alert(`${tamagotchi.name} has jumped into evolution!`)
+     sprite.setAttribute("src", "css/images/sprites/cat-sprite-jump.png")
     }
   },
+
+
 };
 
 // create function that starts the game - when the game starts the timer will start counting
