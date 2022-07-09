@@ -27,7 +27,7 @@ const game = {
   },
   // increase hunger every 15 seconds, if it reaches 10 game is over - tamagotchi dies
   increaseHunger: () => {
-    tamagotchi.hunger += 2 
+    tamagotchi.hunger += 1
     hungerStat.innerHTML = `Hunger: ${tamagotchi.hunger}`
     if(tamagotchi.hunger === 10){
       clearInterval(timer)
@@ -38,9 +38,18 @@ const game = {
 
   // add method to put tamagotchi to sleep, decrement sleepiness once it goes to sleep, or increment sleepiness if awake for too long
   goToSleep: () => {
-
     console.log("zzzzz");
     sleepinessStat.innerHTML = `Sleepiness: ${tamagotchi.sleepiness}`;
+  },
+
+  increaseSleepiness: () => {
+    tamagotchi.sleepiness += 1 
+    sleepinessStat.innerHTML = `Sleepiness: ${tamagotchi.sleepiness}`
+    if(tamagotchi.sleepiness === 10){
+      clearInterval(timer)
+      console.log("timer has stopped")
+      alert(`Poor ${tamagotchi.name} has fainted from exhaustion x_x`)
+    }
   },
 
   // add method to play with tamagotchi, decrement boredom once played with, increment boredom if neglected for
@@ -59,17 +68,22 @@ const game = {
 // create function that starts the game - when the game starts the timer will start counting
 const startGame = () => {
   timer()
-  game.increaseHunger()
   console.log('the game has begun')
 }
 
 // create a global variable for a timer to be running throughout duration of the game
 const timer = () => {
-  let seconds = 0
+  let sec = 1
   setInterval(()=>{
-    document.querySelector("#timer").innerText = `${seconds}`
-    seconds++
+    if(sec % 5 === 0){
+      game.increaseHunger()
+      game.increaseSleepiness()
+    }
+  
+    document.querySelector("#timer").innerText = `${sec}`
+    sec++
   }, 1000)
+
 }
 
 // create form to enter name for tamagotchi
