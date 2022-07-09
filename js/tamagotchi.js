@@ -19,7 +19,7 @@ const sleepBtn = document.querySelector("#sleep");
 class Tamagotchi {
   constructor(name) {
     this.name = name;
-    this.hunger = 9;
+    this.hunger = 4;
     this.boredom = 4;
     this.sleepiness = 2;
     this.age = 0;
