@@ -1,5 +1,30 @@
 body {
-  background-color: aqua;
+  background-color: cadetblue;
+  /* background-image: url("images/holo-bg.jpeg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: scroll; */
+}
+
+#timer{
+  text-align: center;
+}
+
+#tamagotchi{
+
+}
+
+.tamagotchi-temp {
+  height: 50vh;
+  /* display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  max-width: 70%;
+  max-height: 90%; */
+}
+
+#screen{
 }
 
 ul {
@@ -8,14 +33,7 @@ ul {
   justify-content: space-around;
 }
 
-/* #tamagotchi {
-    width: 103px;
-    height: 103px;
-    background: url('/gato-spritesheet.png');
-    top: 50%;
-    transform: translate(-50%);
-    animation: tamagotchi, 
-} */
+
 
 #buttons {
     display: flex;
@@ -23,9 +41,13 @@ ul {
 }
 
 #egg {
-  height: 400px;
-  width: 50%;
-  height: 550px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  max-width: 70%;
+  max-height: 90%;
   /* margin: auto;
   border: black solid 2px;
   border-radius: 900px; */
