@@ -10,7 +10,7 @@ const ageStat = document.querySelector("#age");
 const heading = document.querySelector("#heading");
 const h5 = document.querySelector("h5");
 const inputForm = document.querySelector(".name");
-const inputValue = inputForm.value
+const inputValue = inputForm.value;
 
 // buttons
 const submitBtn = document.querySelector(".btns ");
@@ -21,7 +21,7 @@ const sleepBtn = document.querySelector("#sleep");
 // create a class for tamagotchi
 class Tamagotchi {
   constructor() {
-    this.name = '';
+    this.name = "";
     this.hunger = 9;
     this.sleepiness = 5;
     this.boredom = 5;
@@ -32,17 +32,15 @@ class Tamagotchi {
 }
 // instantiate tamagotchi
 // let tamagotchiName = document.querySelector(".name").value
-const tamagotchi = new Tamagotchi(inputValue)
-console.log(inputValue)
+const tamagotchi = new Tamagotchi(inputValue);
+console.log(inputValue);
 
- 
 // create an object or class for the game itself
 const game = {
-
   nameTamagotchi: () => {
     // // display tamagotchi name on screen
-    tamagotchi.name = inputValue
-    console.log(inputValue)
+    tamagotchi.name = inputValue;
+    console.log(inputValue);
     let nameHeader = document.createElement("h1");
     nameHeader.innerText = inputValue;
     heading.appendChild(nameHeader);
@@ -50,9 +48,9 @@ const game = {
     h5.style.display = "none";
     inputForm.style.display = "none";
     submitBtn.style.display = "none";
-    startGame()
-    
+    startGame();
   },
+
   // add method to feed tamagotchi, decrement hunger once fed, or increment hunger if not fed for a certain interval of time
   feedMe: () => {
     tamagotchi.hunger -= 2;
@@ -78,6 +76,22 @@ const game = {
     tamagotchi.sleepiness -= 1;
     sleepinessStat.innerHTML = `Sleepiness: ${tamagotchi.sleepiness}`;
     console.log("zzzzz");
+    // let btns = document.querySelector("#submit");
+    // btns.classList.toggle("nightModeBtns");
+    let img = document.querySelector(".sun-pic");
+    img.setAttribute("src", "./css/images/moon-clip.png");
+    document.addEventListener("click", (e) => {
+      console.log(e.target)
+      const btnClicked = sleepBtn.contains(e.target);
+      let body = document.querySelector("body");
+      body.classList.toggle("nightMode");
+      if (!btnClicked) {
+        let body = document.querySelector("body");
+        body.classList.toggle("dayMode");
+        let img = document.querySelector(".sun-pic");
+        img.setAttribute("src", "./css/images/sun-clip.png");
+      }
+    });
   },
 
   increaseSleepiness: () => {
@@ -111,6 +125,19 @@ const game = {
     tamagotchi.age += 1;
     ageStat.innerHTML = `Age: ${tamagotchi.age}`;
   },
+};
+
+// function to toggle page back to day time after turning to night time when clicking on sleep
+const nightToDay = () => {
+  document.addEventListener("click", (e) => {
+    const btnClicked = sleepBtn.contains(e.target);
+    if (!btnClicked) {
+      let body = document.querySelector("body");
+      body.classList.toggle("dayMode");
+      let img = document.querySelector(".sun-pic");
+      img.setAttribute("src", "./css/images/sun-clip.png");
+    }
+  });
 };
 
 // create function that starts the game - when the game starts the timer will start counting

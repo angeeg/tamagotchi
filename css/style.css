@@ -7,21 +7,48 @@ body {
   height: 100vh;
 }
 
+
+
 .day-img{
   height: 100px;
   width: 100px;
 }
 
-.sun-pic, .moon-pic{
+.sun-pic {
+  height: 100px;
+  width: 100px;
   margin: auto;
   padding-top: 20px;
   padding-left: 20px;
+  /* transition: transform 1s ease-in-out; */
 }
 
-.moon-pic{
-  transition: transform 1s;
+.dayMode{
+  background-image: linear-gradient( rgb(1, 31, 255), rgb(86, 153, 255)) ;
 }
 
+
+
+.nightMode{
+  background-image: linear-gradient( rgb(0, 0, 79), rgb(41, 47, 114))
+}
+
+.nightModeBtns{
+  background-color: rgb(4, 3, 38) ;
+  color: rgb(164, 164, 164);
+  border: rgb(4, 3, 38); 
+}
+
+/* .day-img:hover{
+  transform: translateX(100%);
+  animation: day-to-night 1s ease-in;
+}
+
+@keyframes day-to-night{
+  100%{
+    transform: translateY(100%);
+  }
+} */
 
 
 .btns {
@@ -35,11 +62,19 @@ body {
   opacity: 95%;
 }
 
+
+
+/* nighttime buttons
+  background-color: rgb(4, 3, 38) ;
+  color: rgb(164, 164, 164);
+  border: rgb(4, 3, 38); */
+
 .btns:hover{
   background-color: rgba(0, 22, 187, 0.468);
   border: rgba(0, 22, 187, 0.468);
   color: white;
 }
+
 
 
 
