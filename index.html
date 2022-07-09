@@ -1,34 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Tamagotchi</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style.css" />
     <script defer type="text/javascript" src="js/tamagotchi.js"></script>
-</head>
-<body>
-    <div id="egg">
-        <main id="screen">
-            <div id="timer"></div>
-            <div id="tamagotchi">
-                <!-- <img class="tamagotchi-temp" src="css/images/rainbow-tamagotchi.png"/> -->
-            </div>
-            <div id="stats">
-                <ul>
-                    <li id="hunger" class="stats">Hunger</li>
-                    <li id="sleepiness" class="stats">Sleepiness</li>
-                    <li id="boredom" class="stats">Boredom</li>
-                    <li id="age" class="stats">Age</li>
-                </ul>
-            </div>
-        </main>
-        <div id="buttons">
-            <!-- <button id="start" class="btns">Start Game</button> -->
-            <button id="eat" class="btns">Eat</button>
-            <button id="play" class="btns">Play</button>
-            <button id="sleep" class="btns">Sleep</button>
-        </div>
+  </head>
+  <body>
+      <div id="heading">
+      <h5>ENTER YOUR TAMAGOTCHI'S NAME</h4>
+        <div id="input">
+    <input type="text" name="tamagotchi-name" class="name">
+      <input type="submit" name="tamagotchi-name" class="submit">
     </div>
-</body>
+    </div>
+    <div id="tamagotchi" class="sprite-container">
+      <img
+        class="sprite-img"
+        src="css/images/sprites/cat-sprite-jump.png"
+        alt="tamagotchi"
+      />
+      <!-- <img class="tamagotchi-temp" src="css/images/rainbow-tamagotchi.png"/> -->
+    </div>
+    <div id="egg">
+        <div id="timer"></div>
+
+        <div id="stats">
+          <ul>
+            <li id="hunger" class="stats">Hunger</li>
+            <li id="sleepiness" class="stats">Sleepiness</li>
+            <li id="boredom" class="stats">Boredom</li>
+            <li id="age" class="stats">Age</li>
+          </ul>
+        </div>
+      <div id="buttons">
+        <!-- <button id="start" class="btns">Start Game</button> -->
+        <button id="eat" class="btns">Eat</button>
+        <button id="play" class="btns">Play</button>
+        <button id="sleep" class="btns">Sleep</button>
+      </div>
+    </div>
+  </body>
 </html>

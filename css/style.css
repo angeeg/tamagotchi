@@ -1,20 +1,14 @@
 body {
-  background-color: cadetblue;
-  /* background-image: url("images/holo-bg.jpeg");
+  background-image: linear-gradient( rgb(111, 0, 111), rgb(255, 21, 255)) ;
+  /* background-image: url("images/holo-bg.jpeg"); */
   background-size: cover;
   background-repeat: no-repeat;
-  background-attachment: scroll; */
+  background-attachment: scroll;
+  height: 100vh;
 }
 
-#timer{
-  text-align: center;
-}
 
-#tamagotchi{
-
-}
-
-.tamagotchi-temp {
+/* .tamagotchi-temp {
   height: 50vh;
   /* display: flex;
   justify-content: center;
@@ -22,23 +16,25 @@ body {
   margin: auto;
   max-width: 70%;
   max-height: 90%; */
-}
+/* }  */
 
-#screen{
-}
-
-ul {
-  list-style: none;
+#heading{
   display: flex;
-  justify-content: space-around;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  padding-top: 20%;
+}
+
+.name{
+  width: 20%;  
+}
+
+.submit{
+  width: 10%;
 }
 
 
-
-#buttons {
-    display: flex;
-    justify-content: space-around;
-}
 
 #egg {
   display: flex;
@@ -46,9 +42,83 @@ ul {
   justify-content: center;
   align-items: center;
   margin: auto;
-  max-width: 70%;
-  max-height: 90%;
+  padding: 0 20%;
   /* margin: auto;
   border: black solid 2px;
   border-radius: 900px; */
 }
+
+/* #tamagotchi{
+  width: 150px;
+  height: 150px;
+  background: rgb(96, 213, 129);
+} */
+
+.sprite-container{
+  margin: auto;
+  padding-top: 5%;
+  width: 95px;
+  height: 140px;
+  overflow: hidden;
+}
+
+.sprite-img{
+  width: 350px;
+  height: 300px;
+  animation: moveSpritesheet 1s steps(3) infinite;
+}
+
+@keyframes moveSpritesheet {
+  from {
+    transform: translate3d(0px,0,0)
+  }
+  to{
+    transform: translate3d(-100%,0,0);
+  }
+}
+
+#timer{
+  text-align: center;
+}
+
+ul {
+  list-style: none;
+  display: flex;
+  text-align: center;
+}
+
+#buttons {
+  display: flex;
+  justify-content: space-around;
+}
+
+:hide{
+  display: none;
+}
+
+/* css for dead sprite */
+/* .sprite-container{
+  
+  width: 100px;
+  height: 140px;
+  overflow: hidden;
+}
+
+.sprite-img{
+  width: 400px;
+  height: 450px;
+  animation: moveSpritesheet 1s steps(4) infinite;
+} */
+
+/* jumping sprite */
+/* .sprite-container{
+  width: 95px;
+  height: 140px;
+  overflow: hidden;
+}
+
+.sprite-img{
+  width: 350px;
+  height: 300px;
+  animation: moveSpritesheet 1s steps(3) infinite;
+} */
