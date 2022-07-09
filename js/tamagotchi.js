@@ -1,15 +1,14 @@
 // create variables to import html elements
 
 // stats
-const hungerStat = document.querySelector("#hunger");
-const sleepinessStat = document.querySelector("#sleepiness");
-const boredomStat = document.querySelector("#boredom");
-const ageStat = document.querySelector("#age");
-
-//
+const hungerStat = document.querySelector("#hunger-col");
+const sleepinessStat = document.querySelector("#sleepiness-col");
+const boredomStat = document.querySelector("#boredom-col");
+const ageStat = document.querySelector("h2");
 const heading = document.querySelector("#heading");
-const h5 = document.querySelector("h5");
-const inputForm = document.querySelector(".name");
+const h2 = document.querySelector("#name");
+const h4 = document.querySelector("h4");
+const inputForm = document.querySelector("#input-name");
 const inputValue = inputForm.value;
 
 // buttons
@@ -20,68 +19,82 @@ const sleepBtn = document.querySelector("#sleep");
 
 // create a class for tamagotchi
 class Tamagotchi {
-  constructor() {
-    this.name = "";
-    this.hunger = 9;
-    this.sleepiness = 5;
-    this.boredom = 5;
+  constructor(name) {
+    this.name = name;
+    this.hunger = 4;
+    this.sleepiness = 2;
+    this.boredom = 4;
     this.age = 0;
   }
 
   // methods to display data
+  getHunger() {
+    hungerStat.innerHTML = `${tamagotchi.hunger}`;
+  }
+  getBoredom() {
+    boredomStat.innerHTML = `${tamagotchi.boredom}`;
+  }
+  getSleepiness() {
+    sleepinessStat.innerHTML = `${tamagotchi.sleepiness}`;
+  }
 }
 // instantiate tamagotchi
-// let tamagotchiName = document.querySelector(".name").value
-const tamagotchi = new Tamagotchi(inputValue);
-console.log(inputValue);
+
+
+// console.log(tamagotchi.name);
 
 // create an object or class for the game itself
 const game = {
   nameTamagotchi: () => {
+    console.log(inputValue)
     // // display tamagotchi name on screen
-    tamagotchi.name = inputValue;
-    console.log(inputValue);
-    let nameHeader = document.createElement("h1");
-    nameHeader.innerText = inputValue;
-    heading.appendChild(nameHeader);
+    let tamagotchiName = document.getElementById("input-name").value
+    // console.log(tamagotchiName);
+    const tamagotchi = new Tamagotchi(tamagotchiName);
+  //  console.log(tamagotchi)
+  const h2Name = document.createElement("h2")
+  h2Name.innerText = tamagotchi.name
+    heading.appendChild(h2Name);
     // hide input form once submit button is clicked
-    h5.style.display = "none";
+    h4.style.display = "none";
     inputForm.style.display = "none";
     submitBtn.style.display = "none";
+    console.log(inputValue);
     startGame();
+    console.log("game starts here");
   },
 
   // add method to feed tamagotchi, decrement hunger once fed, or increment hunger if not fed for a certain interval of time
   feedMe: () => {
     tamagotchi.hunger -= 2;
-    console.log(`Hunger: ${tamagotchi.hunger}`);
+    // console.log(`Hunger: ${tamagotchi.hunger}`);
     // if hunger reaches 0 alert "I'm too full, please feed later"
     if (tamagotchi.hunger <= 0) {
       document.querySelector("#eat").disabled = true;
-      // alert(`${tamagotchi.name} seems to be very full, please feed later.`);
+      alert(`${tamagotchi.name} seems to be very full, please feed later.`);
     }
-    hungerStat.innerHTML = `Hunger: ${tamagotchi.hunger}`;
+    hungerStat.innerHTML = `${tamagotchi.hunger}`;
   },
   // increase hunger every 15 seconds, if it reaches 10 game is over - tamagotchi dies
   increaseHunger: () => {
     tamagotchi.hunger += 1;
-    hungerStat.innerHTML = `Hunger: ${tamagotchi.hunger}`;
+    hungerStat.innerHTML = `${tamagotchi.hunger}`;
     if (tamagotchi.hunger === 10) {
-      // alert(`Poor ${tamagotchi.name} was starved to death x_x`);
+      alert(`Poor ${tamagotchi.name} was starved to death x_x`);
     }
   },
 
   // add method to put tamagotchi to sleep, decrement sleepiness once it goes to sleep, or increment sleepiness if awake for too long
   goToSleep: () => {
     tamagotchi.sleepiness -= 1;
-    sleepinessStat.innerHTML = `Sleepiness: ${tamagotchi.sleepiness}`;
+    sleepinessStat.innerHTML = `${tamagotchi.sleepiness}`;
     console.log("zzzzz");
     // let btns = document.querySelector("#submit");
     // btns.classList.toggle("nightModeBtns");
     let img = document.querySelector(".sun-pic");
     img.setAttribute("src", "./css/images/moon-clip.png");
     document.addEventListener("click", (e) => {
-      console.log(e.target)
+      console.log(e.target);
       const btnClicked = sleepBtn.contains(e.target);
       let body = document.querySelector("body");
       body.classList.toggle("nightMode");
@@ -96,7 +109,7 @@ const game = {
 
   increaseSleepiness: () => {
     tamagotchi.sleepiness += 1;
-    sleepinessStat.innerHTML = `Sleepiness: ${tamagotchi.sleepiness}`;
+    sleepinessStat.innerHTML = `${tamagotchi.sleepiness}`;
     if (tamagotchi.sleepiness === 10) {
       // alert(`Poor ${tamagotchi.name} has fainted from exhaustion x_x`);
       stopTimer();
@@ -106,16 +119,17 @@ const game = {
   // add method to play with tamagotchi, decrement boredom once played with, increment boredom if neglected for
   play: () => {
     tamagotchi.boredom -= 1;
-    boredomStat.innerHTML = `boredom: ${tamagotchi.boredom}`;
+    boredomStat.innerHTML = `${tamagotchi.boredom}`;
     console.log("this is so much fun!");
   },
 
   increaseBoredom: () => {
     tamagotchi.boredom += 1;
-    boredomStat.innerHTML = `boredom: ${tamagotchi.boredom}`;
+    boredomStat.innerHTML = `${tamagotchi.boredom}`;
     if (tamagotchi.boredom === 10) {
-      // alert(`Poor ${tamagotchi.name} has died of boredom x_x`);
       stopTimer();
+      alert(`Poor ${tamagotchi.name} has died of boredom x_x`);
+      
     }
   },
 
@@ -123,25 +137,19 @@ const game = {
   // evolve at 10 and 20
   ageUp: () => {
     tamagotchi.age += 1;
-    ageStat.innerHTML = `Age: ${tamagotchi.age}`;
-  },
-};
-
-// function to toggle page back to day time after turning to night time when clicking on sleep
-const nightToDay = () => {
-  document.addEventListener("click", (e) => {
-    const btnClicked = sleepBtn.contains(e.target);
-    if (!btnClicked) {
-      let body = document.querySelector("body");
-      body.classList.toggle("dayMode");
-      let img = document.querySelector(".sun-pic");
-      img.setAttribute("src", "./css/images/sun-clip.png");
+    ageStat.innerHTML = `Age ${tamagotchi.age}`;
+    if (tamagotchi.age === 3) {
+      let sprite = document.querySelector(".sprite-img");
+      sprite.classList.toggle(".evolved-sprite-img");
     }
-  });
+  },
 };
 
 // create function that starts the game - when the game starts the timer will start counting
 const startGame = () => {
+  tamagotchi.getHunger();
+  tamagotchi.getBoredom();
+  tamagotchi.getSleepiness();
   timer();
   console.log("the game has begun");
 };
@@ -159,7 +167,7 @@ const timer = () => {
       game.ageUp();
       console.log(tamagotchi.age);
     }
-    document.querySelector("#timer").innerText = `${sec}`;
+    document.querySelector("#timer").innerText = `Time: ${sec} seconds`;
     sec++;
   }, 1000);
   // stop timer not invoking ..
@@ -172,13 +180,12 @@ const timer = () => {
   // }
 };
 
-function stopTimer() {
+const stopTimer = () => {
   clearInterval(timer);
-  console.log("timer has stopped");
+  console.log("timer has stopped - game over");
 }
 
 // add eventListeners to buttons to start, eat, play, and sleep - turn lights off when sleeping
-
 submitBtn.addEventListener("click", game.nameTamagotchi);
 eatBtn.addEventListener("click", game.feedMe);
 playBtn.addEventListener("click", game.play);

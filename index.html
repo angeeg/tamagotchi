@@ -4,6 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Tamagotchi</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inconsolata&family=Lato:wght@900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css" />
     <script defer type="text/javascript" src="js/tamagotchi.js"></script>
   </head>
@@ -12,9 +15,9 @@
       <img class="sun-pic" alt="sun illustration" src="css/images/sun-clip.png"/>
     </div>
       <div id="heading">
-      <h5>ENTER YOUR TAMAGOTCHI'S NAME</h4>
-        <div id="input">
-    <input type="text" name="tamagotchi-name" class="name">
+      <h4>ENTER YOUR TAMAGOTCHI'S NAME</h4>
+       <div id="input">
+    <input id="input-name" type="text" name="tamagotchi-name" class="name">
       <input type="button" name="tamagotchi-name" 
       id="submit" class="btns" value="Submit">
     </div>
@@ -31,12 +34,21 @@
         <div id="timer"></div>
 
         <div id="stats">
-          <ul>
-            <li id="hunger" class="stats">Hunger</li>
-            <li id="sleepiness" class="stats">Sleepiness</li>
-            <li id="boredom" class="stats">Boredom</li>
-            <li id="age" class="stats">Age</li>
-          </ul>
+          <table>
+              <tr>
+            <th id="hunger" class="stats">Hunger</th>
+            <th id="boredom" class="stats">Boredom</th>
+            <th id="sleepiness" class="stats">Sleepiness</th>
+            <!-- <th id="age" class="stats">Age</th> -->
+        </tr>
+        <tr id="stats">
+            <td id="hunger-col"></td>
+            <td id="boredom-col"></td>
+            <td id="sleepiness-col"></td>
+            
+            <!-- <td id="age-col"></td> -->
+        </tr>
+          </table>
         </div>
       <div id="buttons">
         <!-- <button id="start" class="btns">Start Game</button> -->
