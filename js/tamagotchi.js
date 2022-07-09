@@ -6,44 +6,52 @@ const sleepinessStat = document.querySelector("#sleepiness");
 const boredomStat = document.querySelector("#boredom");
 const ageStat = document.querySelector("#age");
 
+//
 const heading = document.querySelector("#heading");
 const h5 = document.querySelector("h5");
 const inputForm = document.querySelector(".name");
-const inputValue = document.querySelector(".name").value
+const inputValue = inputForm.value
 
 // buttons
-const submitBtn = document.querySelector(".submit ");
+const submitBtn = document.querySelector(".btns ");
 const eatBtn = document.querySelector("#eat");
 const playBtn = document.querySelector("#play");
 const sleepBtn = document.querySelector("#sleep");
 
 // create a class for tamagotchi
 class Tamagotchi {
-  constructor(name) {
-    this.name = name;
+  constructor() {
+    this.name = '';
     this.hunger = 9;
     this.sleepiness = 5;
     this.boredom = 5;
     this.age = 0;
   }
+
+  // methods to display data
 }
 // instantiate tamagotchi
-const tamagotchi = new Tamagotchi(inputValue);
+// let tamagotchiName = document.querySelector(".name").value
+const tamagotchi = new Tamagotchi(inputValue)
 console.log(inputValue)
 
-
+ 
 // create an object or class for the game itself
 const game = {
+
   nameTamagotchi: () => {
+    // // display tamagotchi name on screen
+    tamagotchi.name = inputValue
+    console.log(inputValue)
+    let nameHeader = document.createElement("h1");
+    nameHeader.innerText = inputValue;
+    heading.appendChild(nameHeader);
     // hide input form once submit button is clicked
     h5.style.display = "none";
     inputForm.style.display = "none";
     submitBtn.style.display = "none";
-    // display tamagotchi name on screen
-    console.log("name", tamagotchi.name);
-    let nameHeader = document.createElement("h1");
-    nameHeader.innerText = tamagotchi.name;
-    heading.appendChild(nameHeader);
+    startGame()
+    
   },
   // add method to feed tamagotchi, decrement hunger once fed, or increment hunger if not fed for a certain interval of time
   feedMe: () => {
@@ -149,4 +157,4 @@ eatBtn.addEventListener("click", game.feedMe);
 playBtn.addEventListener("click", game.play);
 sleepBtn.addEventListener("click", game.goToSleep);
 
-startGame();
+// startGame();
