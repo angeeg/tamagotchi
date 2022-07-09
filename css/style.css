@@ -93,7 +93,7 @@ ul {
 }
 
 :hide{
-  display: none;
+  --display: none;
 }
 
 /* css for dead sprite */
